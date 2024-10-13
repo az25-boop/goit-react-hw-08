@@ -1,7 +1,5 @@
-import React from "react";
+import s from "./HomePage.module.css";
 
-const HomePage = () => {
-  return <div>HomePage</div>;
-};
-
-export default HomePage;
+export default function HomePage() {
+  return <h1 className={s.title}>Welcome</h1>;
+}

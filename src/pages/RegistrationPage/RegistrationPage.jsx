@@ -1,7 +1,10 @@
-import React from "react";
+import RegistrationForm from "../../components/RegistrationForm/RegistrationForm";
 
-const RegistrationPage = () => {
-  return <div>RegistrationPage</div>;
-};
-
-export default RegistrationPage;
+export default function RegistrationPage() {
+  return (
+    <>
+      <h2>Register</h2>
+      <RegistrationForm></RegistrationForm>
+    </>
+  );
+}
