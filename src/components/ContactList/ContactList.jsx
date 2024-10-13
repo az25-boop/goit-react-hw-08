@@ -1,18 +1,17 @@
 import Contact from "../Contact/Contact";
-import { Watch } from "react-loader-spinner";
+import css from "./ContactList.module.css";
+import { ThreeDots } from "react-loader-spinner";
 import { useSelector } from "react-redux";
 import {
   selectContactLoader,
   selectVisibleContacts,
-} from "../../redux/selectors";
-import s from "./ContactList.module.css";
-
+} from "../../redux/contacts/selectors";
 export default function ContactList() {
   const isLoading = useSelector(selectContactLoader);
   const visibleContacts = useSelector(selectVisibleContacts);
   return (
     <>
-      <ul className={s.list}>
+      <ul className={css.list}>
         {visibleContacts.map((contact) => (
           <li key={contact.id}>
             <Contact data={contact} />
@@ -20,14 +19,14 @@ export default function ContactList() {
         ))}
       </ul>
       {isLoading && (
-        <div className={s.loader}>
-          <Watch
+        <div className={css.loader}>
+          <ThreeDots
             visible={true}
             height="80"
             width="80"
-            radius="48"
-            color="#4fa94d"
-            ariaLabel="watch-loading"
+            color="#007bff"
+            radius="9"
+            ariaLabel="three-dots-loading"
             wrapperStyle={{}}
             wrapperClass=""
           />

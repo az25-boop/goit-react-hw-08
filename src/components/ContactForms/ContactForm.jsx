@@ -1,11 +1,10 @@
-import s from "./ContactForms.module.css";
+import css from "./ContactForm.module.css";
 import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 // import { addContact } from "../../redux/contactsSlice";
-import { addContact } from "../../redux/contactsOps";
-
+import { addContact } from "../../redux/contacts/operations";
 export default function ContactForm() {
   const nameId = useId();
   const numberId = useId();
@@ -32,13 +31,13 @@ export default function ContactForm() {
       onSubmit={handleSubmit}
       validationSchema={formSchema}
     >
-      <Form className={s.form}>
+      <Form className={css.form}>
         <label htmlFor={nameId}>Name</label>
         <Field type="text" name="name" id={nameId}></Field>
-        <ErrorMessage className={s.error} name="name" component="span" />
+        <ErrorMessage className={css.error} name="name" component="span" />
         <label htmlFor={numberId}>Number</label>
         <Field type="tel" name="number" id={numberId}></Field>
-        <ErrorMessage className={s.error} name="number" component="span" />
+        <ErrorMessage className={css.error} name="number" component="span" />
         <button type="submit">Add contact</button>
       </Form>
     </Formik>
