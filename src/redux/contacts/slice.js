@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-
 import { fetchContacts, addContact, deleteContact } from "./operations";
 import { logOut } from "../auth/operations";
+
 export const contactsSlice = createSlice({
   name: "contacts",
   initialState: {

@@ -5,6 +5,7 @@ import { IoIosContact } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContact } from "../../redux/contacts/operations";
 import { selectContactDeleter } from "../../redux/contacts/selectors";
+
 export default function Contact({ data }) {
   const dispatch = useDispatch();
   const contactDeleter = useSelector(selectContactDeleter);

@@ -6,6 +6,7 @@ import {
   selectContactLoader,
   selectVisibleContacts,
 } from "../../redux/contacts/selectors";
+
 export default function ContactList() {
   const isLoading = useSelector(selectContactLoader);
   const visibleContacts = useSelector(selectVisibleContacts);

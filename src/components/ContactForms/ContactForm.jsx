@@ -5,18 +5,19 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 // import { addContact } from "../../redux/contactsSlice";
 import { addContact } from "../../redux/contacts/operations";
+
 export default function ContactForm() {
   const nameId = useId();
   const numberId = useId();
   const dispatch = useDispatch();
   const formSchema = Yup.object().shape({
     name: Yup.string()
-      .min(3, "Too short!")
-      .max(50, "Too long!")
-      .required("Required"),
+      .min(3, "Too short! ❤")
+      .max(50, "Too long! ❤")
+      .required("Required 🤍"),
     number: Yup.string()
-      .min(3, "Too short!")
-      .max(50, "Too long!")
+      .min(3, "Too short! 🤍")
+      .max(50, "Too long! 🤍")
 
       // .matches(/^[0-9]{10}$/, "Invalid phone number")
       .required("Required"),
