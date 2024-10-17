@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { register } from "../../redux/auth/operations";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+
 export default function RegistrationForm() {
   const dispatch = useDispatch();
   console.log("hello");
