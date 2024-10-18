@@ -8,6 +8,7 @@ import TextInput from "../../components/TextInput/TextInput.jsx";
 import Label from "../../components/Label/Label.jsx";
 import { register } from "../../redux/auth/operations.js";
 import { validationSinginSchema } from "./ValidationSingin.js";
+// import { validationSinginSchema } from "./ValidationSingin.js";
 
 export default function Registration() {
   const dispatch = useDispatch();
