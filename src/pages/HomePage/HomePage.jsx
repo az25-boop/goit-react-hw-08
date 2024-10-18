@@ -1,5 +1,9 @@
-import s from "./HomePage.module.css";
+import { Typography } from "@material-tailwind/react";
 
-export default function HomePage() {
-  return <h1 className={s.title}>Welcome</h1>;
+export default function Homepage() {
+  return (
+    <Typography variant={"h1"} className="mt-8">
+      PHONE BOOK
+    </Typography>
+  );
 }

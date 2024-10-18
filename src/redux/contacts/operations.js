@@ -1,41 +1,65 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-
-// axios.defaults.baseURL = "https://66a333e144aa6370458057ff.mockapi.io";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { condition } from "../condition.js";
 
 export const fetchContacts = createAsyncThunk(
-  "fetchContacts",
+  "contacts/fetchAll",
   async (_, thunkAPI) => {
-    console.log(axios.defaults.headers);
     try {
-      const response = await axios.get("/contacts");
-      return response.data;
+      const { data } = await axios.get("/contacts");
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: condition,
   }
 );
 
 export const addContact = createAsyncThunk(
-  "addContact",
-  async (value, thunkAPI) => {
+  "contacts/addContact",
+  async ({ name, number }, thunkAPI) => {
     try {
-      const response = await axios.post("/contacts", value);
-      return response.data;
+      const { data } = await axios.post("/contacts", { name, number });
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: condition,
   }
 );
 
 export const deleteContact = createAsyncThunk(
-  "deleteContact",
-  async (id, thunkAPI) => {
+  "contacts/deleteContact",
+  async (contactsId, thunkAPI) => {
     try {
-      const response = await axios.delete(`/contacts/${id}`);
-      return response.data;
+      const { data } = await axios.delete(`/contacts/${contactsId}`);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: condition,
+  }
+);
+
+export const editContact = createAsyncThunk(
+  "contacts/editContact",
+  async (contact, thunkAPI) => {
+    try {
+      const { id, ...updatedFields } = contact;
+      const { data } = await axios.patch(`/contacts/${id}`, updatedFields);
+
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+  {
+    condition: condition,
   }
 );
