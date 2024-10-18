@@ -4,7 +4,7 @@ import Homepage from "./pages/HomePage/Homepage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import Registration from "./pages/RegistrationPage/Registration.jsx";
 import ContactsPage from "./pages/ContactsPage/ContactsPage.jsx";
-import NotFound from "./pages/NotFound/NotFoundPage.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsRefreshing } from "./redux/auth/selectors.js";
