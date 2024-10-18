@@ -6,14 +6,5 @@ export default defineConfig({
   plugins: [react()],
   build: {
     sourcemap: true,
-  },
-  resolve: {
-    alias: {
-      components: "/src/components",
-      pages: "/src/pages",
-      // helpers: "/src/helpers",
-      // styles: "/src/styles",
-      // service: "/src/service",
-    },
-  },
+  }
 });
