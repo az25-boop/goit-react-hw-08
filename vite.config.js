@@ -6,5 +6,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     sourcemap: true,
-  }
+  },
+  resolve: {
+    alias: {
+      "react-helmet-async": "react-helmet-async",
+    },
+  },
 });
