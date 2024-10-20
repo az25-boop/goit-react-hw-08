@@ -1,4 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { contactsReducer } from "./contacts/slice";
+import { filterReducer } from "./filters/slice";
+import { authReducer } from "./auth/slice";
+import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
 import {
   persistStore,
   persistReducer,
@@ -9,26 +13,25 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
-import { authReducer } from "./auth/slise.js";
-import { phoneBookReducer } from "./contacts/slice.js";
-import filtersReducer from "./filters/slice.js";
-import modalReducer from "./modalContact/slice.js";
-
-const authPersistConfig = {
+const authConfig = {
   key: "auth",
   storage,
   whitelist: ["token"],
 };
+const filterConfig = {
+  key: "filter",
+  storage,
+};
+const persistedAuthReducer = persistReducer(authConfig, authReducer);
+const persistedFilterReducer = persistReducer(filterConfig, filterReducer);
 
 export const store = configureStore({
   reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-    contacts: phoneBookReducer,
-    filters: filtersReducer,
-    modal: modalReducer,
+    contacts: contactsReducer,
+    filter: persistedFilterReducer,
+    auth: persistedAuthReducer,
   },
-  middleware: getDefaultMiddleware =>
+  middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

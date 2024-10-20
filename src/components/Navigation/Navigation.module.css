@@ -1,0 +1,10 @@
+.navigation {
+  display: flex;
+  gap: 15px;
+}
+.navigation li {
+  font-size: 20px;
+}
+.active {
+  color: #007bff;
+}

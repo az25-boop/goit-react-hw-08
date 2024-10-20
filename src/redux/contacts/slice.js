@@ -1,68 +1,63 @@
 import { createSlice } from "@reduxjs/toolkit";
-import {
-  addContact,
-  deleteContact,
-  editContact,
-  fetchContacts,
-} from "./operations.js";
+import { toast } from "react-toastify";
 
-function handlePending(state) {
-  state.isLoading = true;
-}
-
-function handleRejected(state, action) {
-  state.isLoading = false;
-  state.error = action.payload;
-}
-
-const slice = createSlice({
+import { fetchContacts, addContact, deleteContact } from "./operations";
+import { logOut } from "../auth/operations";
+export const contactsSlice = createSlice({
   name: "contacts",
   initialState: {
     items: [],
-    loading: false,
-    error: null,
+    error: false,
+    loading: {
+      fetching: false,
+      adding: false,
+      deleting: false,
+    },
   },
-
-  extraReducers: builder => {
+  extraReducers: (builder) =>
     builder
-      .addCase(fetchContacts.pending, handlePending)
+      .addCase(fetchContacts.pending, (state) => {
+        state.error = false;
+        state.loading.fetching = true;
+      })
       .addCase(fetchContacts.fulfilled, (state, action) => {
-        state.loading = false;
-        state.error = null;
+        state.error = false;
+
+        state.loading.fetching = false;
         state.items = action.payload;
       })
-      .addCase(fetchContacts.rejected, handleRejected);
-    builder
-      .addCase(addContact.pending, handlePending)
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading.fetching = false;
+      })
+      .addCase(addContact.pending, (state) => {
+        state.loading.adding = true;
+      })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
+        state.loading.adding = false;
         state.items.push(action.payload);
+        toast.success("Successfully added");
       })
-      .addCase(addContact.rejected, handleRejected);
-    builder
-      .addCase(deleteContact.pending, handlePending)
+      .addCase(addContact.rejected, (state) => {
+        state.loading.adding = false;
+        toast.error("Request error.Please try again");
+      })
+      .addCase(deleteContact.pending, (state, action) => {
+        state.loading.deleting = action.meta.arg;
+      })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        const index = state.items.findIndex(
-          contact => contact.id === action.payload.id
+        state.loading.deleting = false;
+        toast.success("Successfully deleted");
+        state.items = state.items.filter(
+          (item) => item.id !== action.payload.id
         );
-        state.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected);
-    builder
-      .addCase(editContact.pending, handlePending)
-      .addCase(editContact.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.error = null;
-        console.log(action.payload);
-        const index = state.items.findIndex(
-          contact => contact.id === action.payload.id
-        );
-        state.items.splice(index, 1, action.payload);
+      .addCase(deleteContact.rejected, (state) => {
+        state.loading.deleting = false;
+        toast.error("Request error. Please try again");
       })
-      .addCase(editContact.rejected, handleRejected);
-  },
+      .addCase(logOut.fulfilled, (state) => {
+        state.items = [];
+      }),
 });
-export const phoneBookReducer = slice.reducer;
+export const contactsReducer = contactsSlice.reducer;

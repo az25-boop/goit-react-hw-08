@@ -1,65 +1,41 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { condition } from "../condition.js";
+import axios from "axios";
+
+// axios.defaults.baseURL = "https://6633c525f7d50bbd9b4a9c58.mockapi.io";
 
 export const fetchContacts = createAsyncThunk(
-  "contacts/fetchAll",
+  "fetchContacts",
   async (_, thunkAPI) => {
+    console.log(axios.defaults.headers);
     try {
-      const { data } = await axios.get("/contacts");
-      return data;
+      const response = await axios.get("/contacts");
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
-  {
-    condition: condition,
   }
 );
 
 export const addContact = createAsyncThunk(
-  "contacts/addContact",
-  async ({ name, number }, thunkAPI) => {
+  "addContact",
+  async (value, thunkAPI) => {
     try {
-      const { data } = await axios.post("/contacts", { name, number });
-      return data;
+      const response = await axios.post("/contacts", value);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
-  {
-    condition: condition,
   }
 );
 
 export const deleteContact = createAsyncThunk(
-  "contacts/deleteContact",
-  async (contactsId, thunkAPI) => {
+  "deleteContact",
+  async (id, thunkAPI) => {
     try {
-      const { data } = await axios.delete(`/contacts/${contactsId}`);
-      return data;
+      const response = await axios.delete(`/contacts/${id}`);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
-  },
-  {
-    condition: condition,
-  }
-);
-
-export const editContact = createAsyncThunk(
-  "contacts/editContact",
-  async (contact, thunkAPI) => {
-    try {
-      const { id, ...updatedFields } = contact;
-      const { data } = await axios.patch(`/contacts/${id}`, updatedFields);
-
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  },
-  {
-    condition: condition,
   }
 );
