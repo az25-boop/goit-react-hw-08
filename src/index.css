@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base; */
 @tailwind components;
 @tailwind utilities;
 
@@ -38,7 +38,7 @@ button {
   font-weight: bold;
   text-align: center;
   text-decoration: none;
-  color: #fff;
+  color: #f7f4f4;
   background-color: #8440f1;
   border: none;
   border-radius: 5px;

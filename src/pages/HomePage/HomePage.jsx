@@ -20,7 +20,7 @@ export default function HomePage() {
           </svg>
         </span>
       </div>
-      <h1 className="text-2xl font-bold underline">
+      <h1 className="text-align: center text-3xl font-bold underline">
         phonebook manager welcome page 😜
       </h1>
       <h3 class="text-slate-900 dark:text-white mt-5 text-base font-medium tracking-tight">
