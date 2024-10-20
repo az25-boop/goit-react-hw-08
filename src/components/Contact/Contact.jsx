@@ -1,5 +1,5 @@
 import css from "./Contact.module.css";
-import { ThreeDots } from "react-loader-spinner";
+import { Hourglass } from "react-loader-spinner";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosContact } from "react-icons/io";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,15 +13,14 @@ export default function Contact({ data }) {
     <div>
       {contactDeleter === data.id ? (
         <div className={css.deleteContainer}>
-          <ThreeDots
+          <Hourglass
             visible={true}
             height="80"
             width="80"
-            color="#007bff"
-            radius="9"
-            ariaLabel="three-dots-loading"
+            ariaLabel="hourglass-loading"
             wrapperStyle={{}}
             wrapperClass=""
+            colors={["#306cce", "#72a1ed"]}
           />
         </div>
       ) : (

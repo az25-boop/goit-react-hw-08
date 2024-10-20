@@ -1,16 +1,16 @@
-import { ColorRing } from "react-loader-spinner";
+import { Hourglass } from "react-loader-spinner";
 import css from "./Loader.module.css";
 export default function Loader() {
   return (
     <div className={css.loaderContainer}>
-      <ColorRing
-        visible={true}
-        height="80"
-        width="80"
-        ariaLabel="color-ring-loading"
-        wrapperStyle={{}}
-        wrapperClass="color-ring-wrapper"
-        colors={["#e15b64", "#f47e60", "#f8b26a", "#abbd81", "#849b87"]}
+      <Hourglass
+  visible={true}
+  height="80"
+  width="80"
+  ariaLabel="hourglass-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  colors={['#306cce', '#72a1ed']}
       />
     </div>
   );
