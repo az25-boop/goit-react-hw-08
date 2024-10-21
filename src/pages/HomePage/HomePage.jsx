@@ -6,7 +6,7 @@ export default function HomePage() {
       <div>
         <h1 className="text-3xl font-bold underline">
           😜 phonebook manager welcome page
-          <span class="inline-flex items-center justify-center p-2 bg-indigo-500 rounded-md shadow-lg">
+          <span class="inline-flex items-center justify-center p-2 bg-indigo-100 rounded-md shadow-lg">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
