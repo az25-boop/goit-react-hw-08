@@ -33,12 +33,22 @@ export default function LoginForm() {
       onSubmit={handleSubmit}
       validationSchema={formSchema}
     >
-      <Form className={css.form}>
+      <Form className="border-2 border-black p-2 flex flex-col gap-4 rounded-md">
         <label htmlFor={emailId}>Email</label>
-        <Field type="text" name="email" id={emailId}></Field>
+        <Field
+          className="border-2 border-black p-2 flex flex-col gap-4 rounded-md"
+          type="text"
+          name="email"
+          id={emailId}
+        ></Field>
         <ErrorMessage className={css.error} name="email" component="span" />
         <label htmlFor={passwordId}>Password</label>
-        <Field type="password" name="password" id={passwordId}></Field>
+        <Field
+          className="border-2 border-black p-2 flex flex-col gap-4 rounded-md"
+          type="password"
+          name="password"
+          id={passwordId}
+        ></Field>
         <ErrorMessage className={css.error} name="password" component="span" />
         <button type="submit">Log In</button>
       </Form>

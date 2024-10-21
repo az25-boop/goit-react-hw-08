@@ -38,15 +38,30 @@ export default function RegistrationForm() {
       onSubmit={handleSubmit}
       validationSchema={formSchema}
     >
-      <Form className={css.form}>
+      <Form className="border-2 border-black p-6 flex flex-col gap-4 rounded-md">
         <label htmlFor={nameId}>Name</label>
-        <Field type="text" name="name" id={nameId}></Field>
+        <Field
+          className="border-2 border-black p-2 flex flex-col gap-4 rounded-md"
+          type="text"
+          name="name"
+          id={nameId}
+        ></Field>
         <ErrorMessage className={css.error} name="name" component="span" />
         <label htmlFor={emailId}>Email</label>
-        <Field type="text" name="email" id={emailId}></Field>
+        <Field
+          className="border-2 border-black p-2 flex flex-col gap-4 rounded-md"
+          type="text"
+          name="email"
+          id={emailId}
+        ></Field>
         <ErrorMessage className={css.error} name="email" component="span" />
         <label htmlFor={passwordId}>Password</label>
-        <Field type="password" name="password" id={passwordId}></Field>
+        <Field
+          className="border-2 border-black p-2 flex flex-col gap-4 rounded-md"
+          type="password"
+          name="password"
+          id={passwordId}
+        ></Field>
         <ErrorMessage className={css.error} name="password" component="span" />
         <button type="submit">Register</button>
       </Form>

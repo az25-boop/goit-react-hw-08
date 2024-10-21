@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectUserName } from "../../redux/auth/selectors";
 import { logOut } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
+
 export default function UserMenu() {
   const dispatch = useDispatch();
   const userName = useSelector(selectUserName);
@@ -15,7 +16,9 @@ export default function UserMenu() {
   }
   return (
     <>
-      <p>Welcome, {userName}</p>
+      <p className="text-blue-600 text-3xl font-bold underline">
+        Welcome, {userName}
+      </p>
       <button type="button" onClick={handleLogOut}>
         Log Out
       </button>
